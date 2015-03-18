@@ -513,7 +513,7 @@ PVOID supGetFirmwareTable(
 BOOL supQueryObjectName(
 	_In_	HKEY hKey,
 	_Inout_	PVOID Buffer,
-	_In_	ULONG BufferSize //size of bytes in bytes
+	_In_	ULONG BufferSize //size of input buffer in bytes
 	)
 {
 	BOOL cond = FALSE;

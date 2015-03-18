@@ -18,7 +18,7 @@ dbfe617aa9cbf624c1fd39a25410899332bdc0a3 *Source\vmde\minirtl\_strncpy.c
 6c58a1874cdb58602a6af28d2f493b16c4b1d335 *Source\vmde\ntos.h
 5624e41c8fde72299a2603378cf891afba555766 *Source\vmde\resource.h
 6a0eec6aba5c941b3309312ca47b14cac245e0c0 *Source\vmde\Resource.rc
-7aad12feb72c092be1d3289d69318bcc13067272 *Source\vmde\sup.c
+da7944927e4060b8c226442b1eb5021efe7957d4 *Source\vmde\sup.c
 c59a921802ffdcf80c460d7c46ef46b0e6fa2da5 *Source\vmde\sup.h
 ac6c3ec2fcac5f55ae463603e73263fdc2f15104 *Source\vmde\variables.h
 b94764a8f6ac57bfebc00b2c739c64287fcd85bd *Source\vmde\vmde.vcxproj
