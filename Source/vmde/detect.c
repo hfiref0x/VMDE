@@ -547,7 +547,8 @@ BYTE GetHypervisorType(
 	}
 
 	// Parallels VMM ids.
-	if (_strcmpi_a(HvProductName, "prl hyperv") == 0) {
+	// if (_strcmpi_a(HvProductName, "prl hyperv") == 0) {
+	if (_strcmpi_a(HvProductName, " lrpepyh  vr") == 0) {
 		DebugLog(TEXT("GetHypervisorType, Parallels"));
 		return 3;
 	}
