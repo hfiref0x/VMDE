@@ -16,6 +16,9 @@
     <Filter Include="minirtl">
       <UniqueIdentifier>{6e2ce51f-e025-4bc1-b0c7-d8b4e9921e12}</UniqueIdentifier>
     </Filter>
+    <Filter Include="cui">
+      <UniqueIdentifier>{cec4f8f1-9de7-4988-8655-9c2667b050f0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="detect.c">
@@ -51,6 +54,9 @@
     <ClCompile Include="minirtl\_strncpy.c">
       <Filter>minirtl</Filter>
     </ClCompile>
+    <ClCompile Include="cui\cui.c">
+      <Filter>cui</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="detect.h">
@@ -76,6 +82,9 @@
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cui\cui.h">
+      <Filter>cui</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

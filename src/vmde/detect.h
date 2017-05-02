@@ -1,12 +1,12 @@
 /*******************************************************************************
 *
-*  (C) COPYRIGHT AUTHORS, 2013 - 2015
+*  (C) COPYRIGHT AUTHORS, 2013 - 2017
 *
 *  TITLE:       DETECT.H
 *
-*  VERSION:     1.10
+*  VERSION:     1.11
 *
-*  DATE:        18 Mar 2015
+*  DATE:        30 Apr 2017
 *
 *  Common definitions for vmdetection unit.
 *
@@ -20,11 +20,30 @@
 #define _DETECTUNIT_
 
 typedef struct _VENDOR_ENTRY {
-	LIST_ENTRY ListEntry;
-	DWORD VendorID;
-	DWORD DeviceID;
-	WCHAR VendorFullName[MAX_PATH + 1];
+    LIST_ENTRY ListEntry;
+    DWORD VendorID;
+    DWORD DeviceID;
+    WCHAR VendorFullName[MAX_PATH + 1];
 } VENDOR_ENTRY, *PVENDOR_ENTRY;
+
+#define DETECT_BASE_NOTHING             0x00000000
+#define DETECT_DEVICE_OBJECT_NAME       0x00000002
+#define DETECT_DRIVER_OBJECT_NAME       0x00000004
+#define DETECT_MUTEX_NAME               0x00000008
+#define DETECT_INSTRUCTION_BACKDOOR     0x00000010
+#define DETECT_SIGNATURE_SCAN_FIRM      0x00000020
+#define DETECT_SIGNATURE_SCAN_RSMB      0x00000040
+#define DETECT_PCI_HWID                 0x00000080
+
+#define DETECT_DIRECTORY_OBJECT_NAME    0x00001000
+#define DETECT_PORT_NAME                0x00002000
+#define DETECT_HANDLE_TABLE             0x00004000
+#define DETECT_MEMORY_TAG               0x00008000
+#define DETECT_VIRTUAL_REGISTRY         0x00010000
+
+#define DETECT_HYPERVISOR_BIT           0x00020000
+
+typedef ULONG DETECT_FLAG;
 
 #define FIRM 'FIRM'
 #define RSMB 'RSMB'
@@ -44,6 +63,7 @@ typedef struct _VENDOR_ENTRY {
 //vm objects
 #define DIRECTORY_SANDBOXIE L"\\Sandbox"
 #define MUTEX_SANDBOXIE L"Sandboxie_SingleInstanceMutex_Control"
+#define MUTEX_SANDBOXIE2 L"SBIE_BOXED_ServiceInitComplete_Mutex1"
 #define MUTEX_VPCXPMODE L"MicrosoftVirtualPC7UserServiceMakeSureWe'reTheOnlyOneMutex"
 #define DEVICE_SANDBOXIE L"SandboxieDriverApi"
 #define DEVICE_VIRTUALPC L"VirtualMachineServices" 
@@ -64,66 +84,41 @@ typedef struct _VENDOR_ENTRY {
 
 #define VENDOR_SANDBOXIE L"Sandboxie"
 
-
-BOOL IsVirtualBox(
-	VOID
-	);
-
 BOOL IsHypervisor(
-	VOID
-	);
+    _Out_ DETECT_FLAG *Hypervisor);
 
-BOOL IsVmWare(
-	VOID
-	);
+VOID CheckForVirtualBoxVM(
+    _Out_ DETECT_FLAG *VirtualBox);
 
-BOOL IsVirtualPC(
-	VOID
-	);
+VOID CheckForVMWareVM(
+    _Out_ DETECT_FLAG *VMWare);
+
+VOID CheckForVirtualPC(
+    _Out_ DETECT_FLAG *VirtualPC);
+
+VOID CheckForParallelsVM(
+    _Out_ DETECT_FLAG *Parallels);
 
 BOOL IsSandboxiePresent(
-	VOID
-	);
+    _Out_ DETECT_FLAG *Sandboxie);
 
 BOOL AmISandboxed(
-	VOID
-	);
-
-BYTE GetHypervisorType(
-	VOID
-	);
-
-BOOL IsParallels(
-	VOID
-	);
+    _Out_ DETECT_FLAG *IsAppSandboxed);
 
 BOOL IsUnknownVM(
-	VOID
-	);
+    _Out_ DETECT_FLAG *GenericVM);
 
-VOID DumpFirmwareTable(
-	VOID
-	);
-
-VOID Test(
-	VOID
-	);
+BYTE GetHypervisorType(
+    VOID);
 
 BOOL IsSandboxieVirtualRegistryPresent(
-	VOID
-	);
-
-VOID vInitList(
-	VOID
-	);
-
-VOID vFreeList(
-    VOID
-    );
-
+    VOID);
 
 VOID EnumPCIDevsReg(
-	VOID
-	);
+    VOID);
+
+VOID DumpFirmwareTable(
+    VOID);
+
 
 #endif /* _DETECTUNIT_ */

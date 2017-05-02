@@ -1,14 +1,14 @@
 /*******************************************************************************
 *
-*  (C) COPYRIGHT AUTHORS, 2013 - 2015
+*  (C) COPYRIGHT AUTHORS, 2016 - 2017
 *
-*  TITLE:       VARIABLES.H
+*  TITLE:       CUI.H
 *
-*  VERSION:     1.10
+*  VERSION:     1.02
 *
-*  DATE:        18 Mar 2015
+*  DATE:        21 Apr 2017
 *
-*  Shared accross project definitions.
+*  Common header file for console ui.
 *
 * THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF
 * ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED
@@ -16,13 +16,13 @@
 * PARTICULAR PURPOSE.
 *
 *******************************************************************************/
-#ifndef _VARIABLESUNIT_
-#define _VARIABLESUNIT_
+#pragma once
 
-extern BOOL g_IsWow64;
-extern BOOL g_IsWin64;
-extern RTL_OSVERSIONINFOW g_osver;
-extern SYSTEM_INFO g_siSysInfo;
-extern LIST_ENTRY VendorsListHead;
+VOID cuiClrScr(
+    _In_ HANDLE hConsole);
 
-#endif /* _VARIABLESUNIT_ */
+VOID cuiPrintText(
+    _In_ HANDLE hOutConsole,
+    _In_ LPWSTR lpText,
+    _In_ BOOL ConsoleOutputEnabled,
+    _In_ BOOL UseReturn);
