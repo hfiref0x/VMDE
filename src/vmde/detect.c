@@ -153,10 +153,8 @@ PVENDOR_ENTRY vIsInList(
     while ((entry != NULL) && (entry != &VendorsListHead)) {
 
         vendorEntry = CONTAINING_RECORD(entry, VENDOR_ENTRY, ListEntry);
-        if (vendorEntry != NULL) {
-            if (vendorEntry->VendorID == VendorID)
-                return vendorEntry;
-        }
+        if (vendorEntry->VendorID == VendorID)
+            return vendorEntry;
 
         entry = entry->Flink;
     }

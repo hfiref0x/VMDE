@@ -4,7 +4,7 @@
 *
 *  TITLE:       SUP.C
 *
-*  DATE:        30 Apr 2017
+*  DATE:        01 Dec 2017
 *
 * THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF
 * ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED
@@ -415,7 +415,7 @@ PVOID supGetFirmwareTable(
                 return NULL;
             }
 
-            if ((!NT_SUCCESS(Status)) || (Status == STATUS_BUFFER_TOO_SMALL)) {
+            if (Status == STATUS_BUFFER_TOO_SMALL) {
 
                 HeapFree(GetProcessHeap(), 0, sfti);
 
@@ -628,6 +628,7 @@ PVOID supGetSystemInfo(
         }
         if (status == STATUS_INFO_LENGTH_MISMATCH) {
             HeapFree(GetProcessHeap(), 0, Buffer);
+            Buffer = NULL;
             Size *= 2;
             c++;
             if (c > 100) {

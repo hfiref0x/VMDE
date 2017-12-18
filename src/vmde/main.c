@@ -4,7 +4,7 @@
 *
 *  TITLE:       MAIN.C
 *
-*  DATE:        30 Apr 2017
+*  DATE:        01 Dec 2017
 *
 * THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF
 * ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED
@@ -15,7 +15,7 @@
 #include "global.h"
 
 #define PROGRAM_NAME TEXT("Virtual Machine Detector")
-#define VERSION_NAME TEXT("VMD 1.1 build 20 30/04/2017")
+#define VERSION_NAME TEXT("VMD 1.1 build 21, 1 Dec 2017")
 
 //output data
 #define VM_VPC TEXT("VirtualPC VM")
@@ -279,7 +279,7 @@ VOID main(
             cuiPrintText(g_ConOut, szOutput, g_ConsoleOutput, TRUE);
             RtlSecureZeroMemory(&inp1, sizeof(inp1));
             ReadConsoleInput(GetStdHandle(STD_INPUT_HANDLE), &inp1, 1, &l);
-            ReadConsole(g_ConIn, &szOutput, sizeof(szOutput), &l, NULL);
+            ReadConsole(g_ConIn, &szOutput, 1, &l, NULL);
         }
     }
 
